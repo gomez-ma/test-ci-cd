@@ -50,8 +50,8 @@ jobs:
           # Save SSH private key to file and set correct permissions
           echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
           
-          # Disable pseudo-terminal allocation and deploy to the server
-          ssh -T -o StrictHostKeyChecking=no -i private_key -p 2002 $SSH_USER@$SERVER_IP << 'EOF'
+          # Disable pseudo-terminal allocation and deploy to the server with verbose logging
+          ssh -v -T -o StrictHostKeyChecking=no -i private_key -p 2002 $SSH_USER@$SERVER_IP << 'EOF'
             cd /var/www/app
             git pull origin main
             npm install
