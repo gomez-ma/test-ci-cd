@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # รัน workflow เมื่อ push ไปยัง main branch
+      - main  # Run workflow when pushing to the main branch
 
 jobs:
   build-and-test:
@@ -21,11 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      #- name: Run tests
-      #  run: npm test
+      # Uncomment to run tests
+      # - name: Run tests
+      #   run: npm test
 
   deploy:
-    needs: build-and-test  # รัน deploy ก็ต่อเมื่อ build-and-test สำเร็จ
+    needs: build-and-test  # Run deploy after build-and-test completes successfully
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +47,10 @@ jobs:
           SERVER_IP: ${{ secrets.SERVER_IP }}
           SSH_USER: ${{ secrets.SSH_USER }}
         run: |
+          # Save private key and set permissions
           echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
+          
+          # SSH into the server, deploy the app, and clean up the private key
           ssh -o StrictHostKeyChecking=no -i private_key -p 2002 $SSH_USER@$SERVER_IP << 'EOF'
             cd /var/www/app
             git pull origin main
@@ -54,3 +58,6 @@ jobs:
             npm run build
             pm2 restart all
           EOF
+
+          # Clean up private key file
+          rm -f private_key
