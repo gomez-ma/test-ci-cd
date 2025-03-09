@@ -3,7 +3,7 @@ const app = express();
 const PORT =  5000;
 
 app.get("/", (req, res) => {
-    res.send("test I/CD");
+    res.send("test CI/CD");
 })
 
 app.listen(PORT, () => console.log('Server is running ' + PORT));
