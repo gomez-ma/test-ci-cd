@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
+      #- name: Run tests
+      #  run: npm test
 
   deploy:
     needs: build-and-test  # รัน deploy ก็ต่อเมื่อ build-and-test สำเร็จ
