@@ -52,7 +52,7 @@ jobs:
           
           # Disable pseudo-terminal allocation and deploy to the server with verbose logging
           ssh -v -T -o StrictHostKeyChecking=no -i private_key -p 2002 $SSH_USER@$SERVER_IP << 'EOF'
-            cd /var/www/app
+            cd /home/gomes/app
             git pull origin main
             npm install
             npm run build
