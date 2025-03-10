@@ -56,7 +56,7 @@ jobs:
             git pull origin main
             npm install
             #npm run build
-            pm2 start server.js --name backend
+            pm2 start server.js
           EOF
 
           # Clean up the private key file for security reasons
