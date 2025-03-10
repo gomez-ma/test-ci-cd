@@ -1,7 +1,11 @@
 {
   "name": "test-ci-cd",
   "version": "1.0.0",
-  "description": "",
+  "description": "Your project description here",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gomez-ma/test-ci-cd.git"
+  },
   "license": "ISC",
   "author": "GoMez",
   "type": "commonjs",
