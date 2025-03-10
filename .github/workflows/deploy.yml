@@ -56,7 +56,7 @@ jobs:
             git pull origin main
             npm install
             #npm run build
-            pm2 restart server.js
+            pm2 restart all
           EOF
 
           # Clean up the private key file for security reasons
