@@ -55,7 +55,8 @@ jobs:
             cd /home/gomes/app
             git pull origin main
             npm install
-	    pm2 start server.js
+            #npm run build
+            pm2 start server.js
           EOF
 
           # Clean up the private key file for security reasons
